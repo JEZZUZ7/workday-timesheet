@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+.pytest_cache/
+
+# ข้อมูลองค์กร/ส่วนตัว: ห้ามเข้า repo
+*.xlsx
+*.xlsm
+*.csv
+*.png
+timesheet.team.yaml
+config.yaml
+config.local.yaml
+wd-profile/
+output/
+~$*
+
+# test และไฟล์สำหรับพัฒนา เก็บไว้ในเครื่องเท่านั้น (test อิงข้อมูลงานจริง ห้ามขึ้น GitHub)
+tests/
+pytest.ini
+requirements-dev.txt

@@ -1,0 +1,17 @@
+{
+  "name": "team-timesheet",
+  "owner": {
+    "name": "Timesheet maintainers"
+  },
+  "metadata": {
+    "description": "Claude Code plugins for filling Workday time entries from the team schedule"
+  },
+  "plugins": [
+    {
+      "name": "workday-timesheet",
+      "source": "./plugins/workday-timesheet",
+      "description": "Fill Workday Enter Time from the team's Excel schedule (Regular/OT split, never submits)",
+      "version": "0.1.3"
+    }
+  ]
+}

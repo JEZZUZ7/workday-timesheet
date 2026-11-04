@@ -1,0 +1,38 @@
+# ตัวอย่าง team config: ค่าขององค์กร/ทีม ใช้ร่วมกันทุกคนในทีม
+# ห้าม commit ไฟล์จริงเข้า repo ให้คนดูแลทีมเก็บไว้ในโฟลเดอร์ที่ทีมแชร์ (เช่นโฟลเดอร์เดียวกับไฟล์ตารางงานบน Teams)
+# ตั้งชื่อไฟล์เป็น timesheet.team.yaml แล้ว setup จะหาใน OneDrive ให้เอง
+
+excel_name: "<ชื่อไฟล์ตารางงาน>.xlsx"   # หาในโฟลเดอร์เดียวกับไฟล์นี้ก่อน แล้วค่อยหาใน OneDrive
+sheet: "{year} <ชื่อชีต>"              # {year} = ปีของช่วงที่อ่าน
+contract_sheet: "Contract"             # หัวตาราง: Prime Contract No. | Contract No. | Prime Project Name | Customer
+
+regular_window: "08:00-18:00"          # นอกช่วงนี้ = OT ในวันทำงานปกติ
+min_regular_hours: 8
+pad_regular_from_hours: 6              # Regular >= ค่านี้แต่ไม่ถึง min_regular_hours เติมให้ครบ (null = ไม่เติม)
+lunch_deduction: false
+lunch_window: "12:00-13:00"
+
+colors:                                # สี fill ของช่องใน Excel
+  holiday: {theme: [8], tint_min: 0.5, tint_max: 0.7, rgb: []}
+  leave: {rgb: ["FFFFC000"]}
+
+ignore_free_text: [Leave, A leave]     # ข้อความนอกบล็อกที่ไม่ต้องเตือน
+
+workday:
+  url: "https://<host>/<tenant>"
+  enter_time_path: "/d/task/<id>.htmld"   # เปิดหน้า Enter Time แล้ว copy ส่วนของ URL ต่อจาก url
+  date_format: "%d/%m/%Y"              # วันที่บนหัว dialog Enter Time (US = "%m/%d/%Y")
+  fields:                              # ชื่อช่องใน dialog Enter Time
+    time_type: "Time Type"
+    calculation: "<ชื่อช่องที่ใช้ระบุ OT>"
+    comment: "Comment"
+    hours: "Hours"
+  overtime_calculation: "<ค่าที่เลือกในช่อง OT>"
+  # งานลูกค้า: ค้น Time Type ด้วย "<เลขสัญญา> <task>" แล้วเลือกตัวที่ลงท้ายด้วย "> <task>"
+  project_task_by_role:
+    <Role ในตาราง>: "<ชื่อ task ใน Workday>"
+  default_project_task: "<task ของ Role ที่ไม่อยู่ในตาราง>"
+  # งาน Inhouse: Time Type = Time Entry Code ตาม Role
+  inhouse_code_by_role:
+    <Role ในตาราง>: "<Time Entry Code>"
+  skip_leave_days: true                # วันลาที่มีงาน ไม่กรอกอัตโนมัติ แจ้งให้ผู้ใช้ตัดสินใจเอง

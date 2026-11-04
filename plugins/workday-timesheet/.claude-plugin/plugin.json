@@ -1,0 +1,8 @@
+{
+  "name": "workday-timesheet",
+  "version": "0.1.3",
+  "description": "Fill Workday Enter Time from the team's Excel schedule (Regular/OT split, never submits)",
+  "author": {
+    "name": "Timesheet maintainers"
+  }
+}
